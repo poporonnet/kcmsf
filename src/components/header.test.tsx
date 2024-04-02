@@ -1,12 +1,12 @@
+import { AppShell } from "@mantine/core";
+import "@testing-library/jest-dom";
+import { screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import { render } from "../../test";
 import { Header } from "./header.tsx";
-import { screen } from "@testing-library/react";
-import { AppShell } from "@mantine/core";
-import '@testing-library/jest-dom';
 
-describe('header component', () => {
-  test('has /entrylist link', () => {
+describe("header component", () => {
+  test("has /entrylist link", () => {
     render(
       <AppShell
         header={{ height: 60, offset: true }}
@@ -14,28 +14,16 @@ describe('header component', () => {
         padding="md"
       >
         <Header />
-        </AppShell>
+      </AppShell>
     );
 
-    expect(screen.getByText('参加者一覧')).toHaveAttribute(
-      'href',
-      '/entrylist'
-    )
-    expect(screen.getByText('参加者登録')).toHaveAttribute(
-      'href',
-      '/entry'
-    )
-    expect(screen.getByText('試合表')).toHaveAttribute(
-      'href',
-      '/matchlist'
-    )
-    expect(screen.getByText('試合結果')).toHaveAttribute(
-      'href',
-      '/result'
-    )
-    expect(screen.getByText('ランキング')).toHaveAttribute(
-      'href',
-      '/ranking'
-    )
-  })
-})
+    expect(screen.getByText("参加者一覧")).toHaveAttribute(
+      "href",
+      "/entrylist"
+    );
+    expect(screen.getByText("参加者登録")).toHaveAttribute("href", "/entry");
+    expect(screen.getByText("試合表")).toHaveAttribute("href", "/matchlist");
+    expect(screen.getByText("試合結果")).toHaveAttribute("href", "/result");
+    expect(screen.getByText("ランキング")).toHaveAttribute("href", "/ranking");
+  });
+});
