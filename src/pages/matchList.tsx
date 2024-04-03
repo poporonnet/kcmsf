@@ -45,7 +45,7 @@ export const MatchList = () => {
             acc[coat].push(match);
             return acc;
           },
-          {}
+          {},
         );
         setPrimaryMatches(separatedData);
       });
@@ -65,7 +65,7 @@ export const MatchList = () => {
             acc[coat].push(match);
             return acc;
           },
-          {}
+          {},
         );
         setFinalMatches(separatedData);
       });
@@ -83,8 +83,8 @@ export const MatchList = () => {
               key={coat}
               style={{ backgroundColor: "#e0f0e0", borderRadius: "0.5rem" }}
             >
-              <Title order={3}>{parseInt(coat) + 1}コート</Title>
-              {matches.map((match) => {
+              <Title order={3}>{parseInt(coat) + 1}コース</Title>
+              {matches.map((match,i ) => {
                 return (
                   <MatchCard
                     key={match.id}
@@ -92,6 +92,8 @@ export const MatchList = () => {
                     matchType={match.matchType}
                     teams={match.teams}
                     isFinished={match.results != null}
+                    courseIndex={match.courseIndex}
+                    matchIndex={i}
                   />
                 );
               })}
@@ -113,8 +115,8 @@ export const MatchList = () => {
               key={coat}
               style={{ backgroundColor: "#e0f0e0", borderRadius: "0.5rem" }}
             >
-              <Title order={3}>{parseInt(coat) + 1}コート</Title>
-              {matches.map((match) => {
+              <Title order={3}>{parseInt(coat) + 1}コース</Title>
+              {matches.map((match, i) => {
                 return (
                   <MatchCard
                     key={match.id}
@@ -122,6 +124,8 @@ export const MatchList = () => {
                     matchType={match.matchType}
                     teams={match.teams}
                     isFinished={match.results != null}
+                    courseIndex={match.courseIndex}
+                    matchIndex={i}
                   />
                 );
               })}

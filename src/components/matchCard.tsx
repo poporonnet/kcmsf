@@ -1,6 +1,5 @@
-import { Card, SimpleGrid, Text } from "@mantine/core";
-import { IconChecks } from "@tabler/icons-react";
-import { LinkToMatch } from "./linkToMatch";
+import { Card, Divider, Group, Text } from "@mantine/core";
+
 interface MatchCardProps {
   id: string;
   matchType: "primary" | "final";
@@ -19,75 +18,48 @@ interface MatchCardProps {
     };
   };
   isFinished: boolean;
+  courseIndex: number;
+  matchIndex: number;
 }
+
+const MatchCardTeam = (props: {teamName: string, courseType: "左" | "右"}) => {
+  return (
+    <Group style={{display: "flex", fontSize: "2rem"}}>
+      <Text size={"20px"} fw={800} truncate={"end"}>{props.courseType}</Text>
+      <Text
+        size={"32px"}
+        fw={800}
+      >
+        {props.teamName}
+      </Text>
+    </Group>
+  )
+}
+
 export const MatchCard = (props: MatchCardProps) => {
   return (
-    <LinkToMatch
-      info={{
-        id: props.id,
-        teams: props.teams,
-        matchType: props.matchType,
+    <Card
+      shadow="none"
+      padding="sm"
+      radius="md"
+      m={"md"}
+      withBorder
+      variant={"outline"}
+      style={{
+        width: "20rem",
+        height: "10rem",
+        textAlign: "left"
       }}
-      style={{ pointerEvents: props.isFinished ? "none" : "auto" }}
     >
-      <Card
-        shadow={props.isFinished ? "none" : "sm"}
-        padding="sm"
-        radius="md"
-        m={"md"}
-        withBorder
-        variant={"outline"}
-        style={{
-          display: "flex",
-          width: "15rem",
-          height: "8rem",
-          alignItems: "center",
-        }}
-      >
-        {props.isFinished ? (
-          <IconChecks
-            size={30}
-            color={"#00FF00"}
-            style={{
-              position: "absolute",
-              top: "0.5rem",
-              right: "0.5rem",
-            }}
-          />
-        ) : (
-          <></>
-        )}
-        <SimpleGrid
-          cols={1}
-          style={{
-            color: "black",
-            textAlign: "center",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <Text
-            size={"1rem"}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text size="xl">右: {props.teams["right"].teamName}</Text>
-          </Text>
-          <Text
-            size={"1rem"}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text size="xl">左: {props.teams["left"].teamName}</Text>
-          </Text>
-        </SimpleGrid>
-      </Card>
-    </LinkToMatch>
+      <div>
+        <Text fw={"800"} size={"md"} mb={".6rem"}>第{props.matchIndex+1}試合 {props.courseIndex+1}コース</Text>
+
+        <MatchCardTeam teamName={props.teams["left"].teamName} courseType={"左"} />
+
+        <Divider my={"sm"} variant={"dashed"} />
+
+        <MatchCardTeam teamName={props.teams["right"].teamName} courseType={"右"} />
+      </div>
+    </Card>
   );
 };
