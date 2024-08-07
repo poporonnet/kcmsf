@@ -1,3 +1,7 @@
+本リポジトリは2024/08/07をもってアーカイブされました。開発は https://github.com/poporonnet/kcmsx に移行しました。
+
+---
+
 # kcmsf
 
 Matz葉がにロボコン 大会運営支援ツール  
